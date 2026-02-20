@@ -59,7 +59,7 @@ mainContainer.addEventListener("click", function (event) {
         let water = parentNode.querySelector(".water").innerText;
         let status = parentNode.querySelector(".status").innerText;
         let notes = parentNode.querySelector(".notes").innerText;
-    
+
 
         const cardInfo = {
             plantName,
@@ -77,7 +77,58 @@ mainContainer.addEventListener("click", function (event) {
         }
 
         calCulateCount();
+
+        showRender()
     }
 
-})
+
+});
+
+
+// new div create and append thriving section
+function showRender() {
+
+    const filterSection = document.getElementById("filter-section");
+
+    filterSection.innerHTML = "";
+
+    for (let thrive of thrivingList) {
+
+        let div = document.createElement("div");
+        div.className = "card flex justify-between p-5 border rounded-xl";
+        div.innerHTML = `
+         <div class="space-y-4">
+
+                    <div>
+                        <p class="plant-name text-3xl text-cyan-300">${thrive.plantName}</p>
+                        <p class="latin-name">${thrive.latinName}
+                        </p>
+                    </div>
+
+                    <div class="flex gap-3 items-center">
+                        <p class="light bg-amber-200 p-2 rounded">${thrive.light}</p>
+                        <p class="water bg-amber-200 p-2 rounded">${thrive.water}</p>
+                    </div>
+
+                    <p class="status">${thrive.status}</p>
+                    <p class="notes">${thrive.notes}</p>
+
+                    <div class="flex gap-5">
+                        <button class="thriving-btn bg-green-300 p-2 px-4 rounded font-semibold">Thriving</button>
+                        <button class="struggling-btn bg-red-300 p-2 px-4 rounded font-semibold">Struggling</button>
+                    </div>
+                </div>
+                <!-- main part 2 -->
+                <div>
+                    <button id="delete-btn" class="bg-red-800 px-4 py-1 rounded font-extrabold">Delete</button>
+                </div>
+    
+        `;
+
+        filterSection.appendChild(div);
+        console.log(filterSection)
+    }
+
+
+}
 
