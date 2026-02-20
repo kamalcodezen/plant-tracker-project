@@ -20,3 +20,24 @@ function calCulateCount() {
 }
 calCulateCount();
 
+
+
+//  position button access and check toggle and add color
+
+function allThrivingStrugglingShowId(id) {
+    const allFilterBtn = document.getElementById("all-filter-btn");
+    const thrivingFilterBtn = document.getElementById("thriving-filter-btn");
+    const strugglingFilterBtn = document.getElementById("struggling-filter-btn");
+
+    allFilterBtn.classList.add("bg-amber-100");
+    thrivingFilterBtn.classList.add("bg-amber-100");
+    strugglingFilterBtn.classList.add("bg-amber-100");
+
+    allFilterBtn.classList.remove("bg-pink-400", "text-3xl");
+    thrivingFilterBtn.classList.remove("bg-pink-400", "text-3xl");
+    strugglingFilterBtn.classList.remove("bg-pink-400", "text-3xl");
+
+    const selected = document.getElementById(id);
+    selected.classList.add("bg-pink-400", "text-3xl");
+    selected.classList.remove("bg-amber-100");
+}
