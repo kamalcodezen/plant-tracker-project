@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="tailwind.init.css">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Plant Tracker</title>
 </head>
@@ -38,12 +37,16 @@
 
     <hr class="mt-5">
     <!-- main section -->
-    <main class="w-11/12 mx-auto">
+    <main id="main" class="w-11/12 mx-auto">
         <div class="py-5  gap-10 font-semibold text-xl pl-10 justify-center flex">
 
-            <button id="all-filter-btn" class="bg-pink-600 p-3 px-10 rounded">All</button>
-            <button id="thriving-filter-btn" class="bg-amber-100 p-3 rounded">Thriving</button>
-            <button id="struggling-filter-btn" class="bg-amber-100 p-3 rounded">Struggling</button>
+            <button id="all-filter-btn" onclick="('all-filter-btn')" class="bg-amber-100   p-3 px-10 rounded">All</button>
+
+            <button id="thriving-filter-btn" onclick="('thriving-filter-btn')"
+                class="bg-amber-100 p-3 rounded">Thriving</button>
+
+            <button id="struggling-filter-btn" onclick="('struggling-filter-btn')"
+                class="bg-amber-100 p-3 rounded">Struggling</button>
 
         </div>
 
@@ -53,7 +56,7 @@
             <div class="card flex justify-between p-5 border rounded-xl">
                 <!-- main part 1 -->
                 <div class="space-y-4">
-                    
+
                     <div>
                         <p class="plant-name text-3xl text-cyan-300">Plant Name 1</p>
                         <p class="latin-name">Latin Name
@@ -84,7 +87,7 @@
                 <!-- main part 1 -->
                 <div class="space-y-4">
                     <div>
-                        <p class="plant-name text-3xl text-cyan-300">Plant Name 1</p>
+                        <p class="plant-name text-3xl text-cyan-300">Plant Name 2</p>
                         <p class="latin-name">Latin Name
                         </p>
                     </div>
@@ -112,7 +115,7 @@
                 <!-- main part 1 -->
                 <div class="space-y-4">
                     <div>
-                        <p class="plant-name text-3xl text-cyan-300">Plant Name 1</p>
+                        <p class="plant-name text-3xl text-cyan-300">Plant Name 3</p>
                         <p class="latin-name">Latin Name
                         </p>
                     </div>
