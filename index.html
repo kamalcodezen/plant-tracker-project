@@ -10,20 +10,25 @@
 </head>
 
 <body>
+    <!-- header section  -->
     <header>
         <div class="w-11/12 mx-auto py-3">
             <h2 class="heading text-5xl font-bold text-green-500 mb-3">Plant Tracker</h2>
+
             <div class="grid grid-cols-3 gap-3 ">
+
                 <div class="bg-amber-100 p-5 rounded-xl font-bold text-2xl">
-                    <p>0</p>
+                    <p id="total">0</p>
                     <p>Total</p>
                 </div>
+
                 <div class="bg-green-300 p-5 rounded-xl font-bold text-2xl">
-                    <p>0</p>
+                    <p id="thriving">0</p>
                     <p>Thrive</p>
                 </div>
+
                 <div class="bg-red-300 p-5 rounded-xl font-bold text-2xl">
-                    <p>0</p>
+                    <p id="struggling">0</p>
                     <p>Struggling</p>
                 </div>
             </div>
@@ -31,7 +36,45 @@
         </div>
     </header>
 
+    <hr class="mt-5">
+    <!-- main section -->
+    <main class="w-11/12">
+        <div>
+            <button id="all-filter-btn">All</button>
+            <button id="thriving-filter-btn">Thriving</button>
+            <button id="struggling-filter-btn">Struggling</button>
+        </div>
 
+        <section>
+            <!-- card 1 -->
+            <div class="card">
+                <!-- main part 1 -->
+                <div>
+                    <div>
+                        <p class="plant-name">Plant Name</p>
+                        <p class="latin-name">LAtin Name
+                        </p>
+                    </div>
+                    <div>
+                        <p class="light">Bright Indicate</p>
+                        <p class="water">Weekly</p>
+                    </div>
+                    <div>
+                        <p class="status">Not Applicable</p>
+                        <p class="notes">New leaf unfurling by the east window</p>
+                    </div>
+                    <div>
+                        <button class="thriving-btn">Thriving</button>
+                        <button class="struggling-btn">Struggling</button>
+                    </div>
+                </div>
+                <!-- main part 2 -->
+                <div>
+                    <button>Delete</button>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <script src="javaScript/script.js"></script>
 </body>
