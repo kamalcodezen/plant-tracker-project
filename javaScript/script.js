@@ -4,7 +4,7 @@ const total = document.getElementById("total");
 const thrivingPlant = document.getElementById("thriving");
 const strugglingPlant = document.getElementById("struggling");
 
-//main tag access and check length 
+//all card section access and check length total position
 const allCardSection = document.getElementById("all-card");
 
 
@@ -40,4 +40,36 @@ function allThrivingStrugglingShowId(id) {
     const selected = document.getElementById(id);
     selected.classList.add("bg-pink-400", "text-3xl");
     selected.classList.remove("bg-amber-100");
-}
+};
+
+
+
+// thriving button click and details access parent  and send to thriving position
+
+const mainContainer = document.getElementById("main");
+
+mainContainer.addEventListener("click", function (event) {
+
+    console.log(event.target.parentNode.parentNode)
+    let parentNode = event.target.parentNode.parentNode;
+    let plantName = parentNode.querySelector(".plant-name").innerText;
+    let latinName = parentNode.querySelector(".latin-name").innerText;
+    let light = parentNode.querySelector(".light").innerText;
+    let water = parentNode.querySelector(".water").innerText;
+    let status = parentNode.querySelector(".status").innerText;
+    let notes = parentNode.querySelector(".notes").innerText;
+    console.log(plantName, latinName, light, water, status, notes)
+
+
+    const cardInfo = {
+        plantName,
+        latinName,
+        light,
+        water,
+        status,
+        notes
+    }
+
+
+    
+})
