@@ -50,26 +50,34 @@ const mainContainer = document.getElementById("main");
 
 mainContainer.addEventListener("click", function (event) {
 
-    console.log(event.target.parentNode.parentNode)
-    let parentNode = event.target.parentNode.parentNode;
-    let plantName = parentNode.querySelector(".plant-name").innerText;
-    let latinName = parentNode.querySelector(".latin-name").innerText;
-    let light = parentNode.querySelector(".light").innerText;
-    let water = parentNode.querySelector(".water").innerText;
-    let status = parentNode.querySelector(".status").innerText;
-    let notes = parentNode.querySelector(".notes").innerText;
-    console.log(plantName, latinName, light, water, status, notes)
+    if (event.target.classList.contains("thriving-btn")) {
 
+        let parentNode = event.target.parentNode.parentNode;
+        let plantName = parentNode.querySelector(".plant-name").innerText;
+        let latinName = parentNode.querySelector(".latin-name").innerText;
+        let light = parentNode.querySelector(".light").innerText;
+        let water = parentNode.querySelector(".water").innerText;
+        let status = parentNode.querySelector(".status").innerText;
+        let notes = parentNode.querySelector(".notes").innerText;
+    
 
-    const cardInfo = {
-        plantName,
-        latinName,
-        light,
-        water,
-        status,
-        notes
+        const cardInfo = {
+            plantName,
+            latinName,
+            light,
+            water,
+            status,
+            notes
+        }
+
+        const plantExists = thrivingList.find(item => item.plantName == cardInfo.plantName);
+
+        if (!plantExists) {
+            thrivingList.push(cardInfo);
+        }
+
+        calCulateCount();
     }
 
-
-    
 })
+
