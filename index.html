@@ -11,10 +11,10 @@
 <body>
     <!-- header section  -->
     <header>
-        <div class="w-11/12 mx-auto py-3">
+        <div class="w-11/12 mx-auto py-3 ">
             <h2 class="heading text-5xl font-bold text-green-500 mb-3">Plant Tracker</h2>
 
-            <div class="grid grid-cols-3 gap-3 ">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
 
                 <div class="bg-amber-100 p-5 rounded-xl font-bold text-2xl">
                     <p id="total">0</p>
@@ -38,10 +38,10 @@
     <hr class="mt-5">
     <!-- main section -->
     <main id="main" class="w-11/12 mx-auto">
-        <div class="py-5  gap-10 font-semibold text-xl pl-10 justify-center flex">
+        <div class="py-5  gap-3 md:gap-10 font-semibold text-xl  justify-center flex ">
 
             <button id="all-filter-btn" onclick="allThrivingStrugglingShowId('all-filter-btn')"
-                class="bg-amber-100   p-3 px-10 rounded">All</button>
+                class="bg-amber-100  p-3 px-7 rounded">All</button>
 
             <button id="thriving-filter-btn" onclick="allThrivingStrugglingShowId('thriving-filter-btn')"
                 class="bg-amber-100 p-3 rounded">Thriving</button>
@@ -53,7 +53,7 @@
 
 
         <!-- thriving section create -->
-        <section id="filter-section" class="hidden space-y-4">
+        <section id="thriving-filter-section" class="hidden space-y-4 "">
 
         </section>
 
@@ -91,7 +91,7 @@
                 </div>
                 <!-- main part 2 -->
                 <div>
-                    <button  class="delete-btn bg-red-800 px-4 py-1 rounded font-extrabold">Delete</button>
+                    <button class="delete-btn bg-red-800 px-4 py-1 rounded font-extrabold text-amber-50">Delete</button>
                 </div>
             </div>
 
@@ -122,7 +122,8 @@
                 </div>
                 <!-- main part 2 -->
                 <div>
-                    <button class=" delete-btn bg-red-800 px-4 py-1 rounded font-extrabold ">Delete</button>
+                    <button
+                        class=" delete-btn bg-red-800 px-4 py-1 rounded font-extrabold text-amber-50">Delete</button>
                 </div>
             </div>
 
@@ -153,7 +154,7 @@
                 </div>
                 <!-- main part 2 -->
                 <div>
-                    <button class="delete-btn bg-red-800 px-4 py-1 rounded font-extrabold">Delete</button>
+                    <button class="delete-btn bg-red-800 px-4 py-1 rounded font-extrabold text-amber-50">Delete</button>
                 </div>
             </div>
 

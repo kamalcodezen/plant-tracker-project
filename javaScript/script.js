@@ -1,11 +1,22 @@
 
+
 // plant count all position
 const total = document.getElementById("total");
 const thrivingPlant = document.getElementById("thriving");
 const strugglingPlant = document.getElementById("struggling");
 
+const allFilterBtn = document.getElementById("all-filter-btn");
+const thrivingFilterBtn = document.getElementById("thriving-filter-btn");
+const strugglingFilterBtn = document.getElementById("struggling-filter-btn");
+
+
+const mainContainer = document.getElementById("main");
+
+
 //all card section access and check length total position
 const allCardSection = document.getElementById("all-card");
+const thrivingFilterSection = document.getElementById("thriving-filter-section");
+const struggleFilterSection = document.getElementById("struggling-filter-section");
 
 
 // check length and store object details
@@ -13,7 +24,8 @@ let thrivingList = [];
 let strugglingList = [];
 // create a function and check all position length
 function calCulateCount() {
-    total.innerText = allCardSection.children.length;
+    // total.innerText = allCardSection.children.length;
+    total.innerText = thrivingList.length + strugglingList.length;
     thrivingPlant.innerText = thrivingList.length;
     strugglingPlant.innerText = strugglingList.length;
 
@@ -21,13 +33,9 @@ function calCulateCount() {
 calCulateCount();
 
 
-
 //  position button access and check toggle and add color
 
 function allThrivingStrugglingShowId(id) {
-    const allFilterBtn = document.getElementById("all-filter-btn");
-    const thrivingFilterBtn = document.getElementById("thriving-filter-btn");
-    const strugglingFilterBtn = document.getElementById("struggling-filter-btn");
 
     allFilterBtn.classList.add("bg-amber-100");
     thrivingFilterBtn.classList.add("bg-amber-100");
@@ -42,29 +50,30 @@ function allThrivingStrugglingShowId(id) {
     selected.classList.remove("bg-amber-100");
 
 
-
+    //section click and showRender
     //section click and showRender
     if (id == "thriving-filter-btn") {
         allCardSection.classList.add("hidden");
-        filterSection.classList.remove("hidden");
-        filterStruggleSection.classList.add("hidden");
+        thrivingFilterSection.classList.remove("hidden");
+        struggleFilterSection.classList.add("hidden");
     } else if (id == "all-filter-btn") {
         allCardSection.classList.remove("hidden");
-        filterSection.classList.add("hidden");
-        filterStruggleSection.classList.add("hidden");
+        thrivingFilterSection.classList.add("hidden");
+        struggleFilterSection.classList.add("hidden");
 
-    } else if (id == "struggling-filter-btn") {
-        allCardSection.classList.add("hidden");
-        filterStruggleSection.classList.remove("hidden");
-        filterSection.classList.add("hidden");
     }
+    else if (id == "struggling-filter-btn") {
+        allCardSection.classList.add("hidden");
+        struggleFilterSection.classList.remove("hidden");
+        thrivingFilterSection.classList.add("hidden");
+    }
+
 };
 
 
 
-// thriving button click and details access parent  and send to thriving position
 
-const mainContainer = document.getElementById("main");
+// thriving button click and details access parent  and send to thriving position
 
 mainContainer.addEventListener("click", function (event) {
 
@@ -93,11 +102,13 @@ mainContainer.addEventListener("click", function (event) {
         if (!plantExists) {
             thrivingList.push(cardInfo);
         }
+        strugglingList = strugglingList.filter(item => item.plantName != cardInfo.plantName);
 
         calCulateCount();
-
-        showRender()
+        renderAll();
+       
     }
+
     if (event.target.classList.contains("struggling-btn")) {
 
         let parentNode = event.target.parentNode.parentNode;
@@ -124,26 +135,26 @@ mainContainer.addEventListener("click", function (event) {
             strugglingList.push(cardInfo);
         }
 
+        thrivingList = thrivingList.filter(item => item.plantName != cardInfo.plantName);
+
         calCulateCount();
-
-        showRender()
-
+        renderAll()
+       
     }
-
-
 
 });
 
 
+// renderAll function thriving and struggle
+function renderAll() {
+    showRenderThrive();
+    showRenderStruggle();
+}
 
-
-
-const filterSection = document.getElementById("filter-section");
-const filterStruggleSection = document.getElementById("struggling-filter-section");
 // new div create and append thriving section
-function showRender() {
+function showRenderThrive() {
 
-    filterSection.innerHTML = "";
+    thrivingFilterSection.innerHTML = "";
 
     for (let thrive of thrivingList) {
 
@@ -178,11 +189,15 @@ function showRender() {
     
         `;
 
-        filterSection.appendChild(div);
+        thrivingFilterSection.appendChild(div);
 
     }
+}
 
-    filterStruggleSection.innerHTML = "";
+
+function showRenderStruggle() {
+
+    struggleFilterSection.innerHTML = "";
 
     for (let struggle of strugglingList) {
 
@@ -217,9 +232,13 @@ function showRender() {
     
         `;
 
-        filterStruggleSection.appendChild(div);
+        struggleFilterSection.appendChild(div);
 
     }
 
 }
+
+
+
+
 
