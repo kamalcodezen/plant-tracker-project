@@ -40,6 +40,24 @@ function allThrivingStrugglingShowId(id) {
     const selected = document.getElementById(id);
     selected.classList.add("bg-pink-400", "text-3xl");
     selected.classList.remove("bg-amber-100");
+
+
+
+    //section click and showRender
+    if (id == "thriving-filter-btn") {
+        allCardSection.classList.add("hidden");
+        filterSection.classList.remove("hidden");
+        filterStruggleSection.classList.add("hidden");
+    } else if (id == "all-filter-btn") {
+        allCardSection.classList.remove("hidden");
+        filterSection.classList.add("hidden");
+        filterStruggleSection.classList.add("hidden");
+
+    } else if (id == "struggling-filter-btn") {
+        allCardSection.classList.add("hidden");
+        filterStruggleSection.classList.remove("hidden");
+        filterSection.classList.add("hidden");
+    }
 };
 
 
@@ -57,7 +75,7 @@ mainContainer.addEventListener("click", function (event) {
         let latinName = parentNode.querySelector(".latin-name").innerText;
         let light = parentNode.querySelector(".light").innerText;
         let water = parentNode.querySelector(".water").innerText;
-        let status = parentNode.querySelector(".status").innerText;
+        let status = parentNode.querySelector(".status").innerText = "Thrive";
         let notes = parentNode.querySelector(".notes").innerText;
 
 
@@ -80,15 +98,50 @@ mainContainer.addEventListener("click", function (event) {
 
         showRender()
     }
+    if (event.target.classList.contains("struggling-btn")) {
+
+        let parentNode = event.target.parentNode.parentNode;
+        let plantName = parentNode.querySelector(".plant-name").innerText;
+        let latinName = parentNode.querySelector(".latin-name").innerText;
+        let light = parentNode.querySelector(".light").innerText;
+        let water = parentNode.querySelector(".water").innerText;
+        let status = parentNode.querySelector(".status").innerText = "struggling";
+        let notes = parentNode.querySelector(".notes").innerText;
+
+
+        const cardInfo = {
+            plantName,
+            latinName,
+            light,
+            water,
+            status,
+            notes
+        }
+
+        const plantExists = strugglingList.find(item => item.plantName == cardInfo.plantName);
+
+        if (!plantExists) {
+            strugglingList.push(cardInfo);
+        }
+
+        calCulateCount();
+
+        showRender()
+
+    }
+
 
 
 });
 
 
+
+
+
+const filterSection = document.getElementById("filter-section");
+const filterStruggleSection = document.getElementById("struggling-filter-section");
 // new div create and append thriving section
 function showRender() {
-
-    const filterSection = document.getElementById("filter-section");
 
     filterSection.innerHTML = "";
 
@@ -120,15 +173,53 @@ function showRender() {
                 </div>
                 <!-- main part 2 -->
                 <div>
-                    <button id="delete-btn" class="bg-red-800 px-4 py-1 rounded font-extrabold">Delete</button>
+                    <button  class="delete-btn bg-red-800 px-4 py-1 rounded font-extrabold">Delete</button>
                 </div>
     
         `;
 
         filterSection.appendChild(div);
-        console.log(filterSection)
+
     }
 
+    filterStruggleSection.innerHTML = "";
+
+    for (let struggle of strugglingList) {
+
+        let div = document.createElement("div");
+        div.className = "flex justify-between p-5 border rounded-xl";
+        div.innerHTML = `
+         <div class="space-y-4">
+
+                    <div>
+                        <p class="plant-name text-3xl text-cyan-300">${struggle.plantName}</p>
+                        <p class="latin-name">${struggle.latinName}
+                        </p>
+                    </div>
+
+                    <div class="flex gap-3 items-center">
+                        <p class="light bg-amber-200 p-2 rounded">${struggle.light}</p>
+                        <p class="water bg-amber-200 p-2 rounded">${struggle.water}</p>
+                    </div>
+
+                    <p class="status">${struggle.status}</p>
+                    <p class="notes">${struggle.notes}</p>
+
+                    <div class="flex gap-5">
+                        <button class="thriving-btn bg-green-300 p-2 px-4 rounded font-semibold">Thriving</button>
+                        <button class="struggling-btn bg-red-300 p-2 px-4 rounded font-semibold">Struggling</button>
+                    </div>
+                </div>
+                <!-- main part 2 -->
+                <div>
+                    <button class="delete-btn bg-red-800 px-4 py-1 rounded font-extrabold">Delete</button>
+                </div>
+    
+        `;
+
+        filterStruggleSection.appendChild(div);
+
+    }
 
 }
 
